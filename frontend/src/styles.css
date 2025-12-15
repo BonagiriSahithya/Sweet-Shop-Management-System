@@ -1,0 +1,253 @@
+/* =======================
+   GLOBAL
+======================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f2f5, #ffe6f0);
+  color: #333;
+}
+
+/* =======================
+   FULL PAGE BACKGROUNDS
+======================= */
+.admin-bg,
+.user-bg,
+.auth-bg {
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push content below navbar */
+.page-content {
+  flex: 1;
+  padding-top: 30px;
+}
+
+/* =======================
+   CONTAINERS
+======================= */
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  width: 95%;
+  position: relative;
+  z-index: 2;
+}
+
+/* =======================
+   MAIN NAVBAR
+======================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #ff6b81, #ff4081);
+  color: white;
+  padding: 15px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.navbar-left h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.navbar-right span {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.navbar-right button {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: darkblue;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navbar-right button:hover {
+  background: white;
+  color: darkblue;
+}
+
+/* =======================
+   DASHBOARD NAVBAR
+======================= */
+.dashboard-navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 25px;
+  background: linear-gradient(90deg, #ff6b81, #ff4081);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.dashboard-navbar-left,
+.dashboard-navbar-right {
+  display: flex;
+  gap: 12px;
+}
+
+.dashboard-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: white;
+  font-size: 1.9rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Dashboard Buttons */
+.dashboard-navbar button {
+  background: rgba(255,255,255,0.95);
+  color: darkblue;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dashboard-navbar button:hover {
+  background: white;
+}
+
+.logout-btn {
+  color: darkred;
+}
+
+/* Active Tab */
+.active-tab {
+  background: linear-gradient(90deg, #6a11cb, #2575fc) !important;
+  color: white !important;
+}
+
+/* =======================
+   CARDS
+======================= */
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.auth-card {
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =======================
+   INPUTS & BUTTONS
+======================= */
+input,
+select,
+button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  background: linear-gradient(90deg, #ff6b81, #ff4081);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #ff4081, #ff6b81);
+}
+
+/* =======================
+   SWEETS GRID
+======================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.sweet-card {
+  background: rgba(255,255,255,0.95);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.sweet-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Buttons inside cards */
+.card-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+  .dashboard-navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .dashboard-title {
+    position: static;
+    transform: none;
+    order: -1;
+  }
+}
