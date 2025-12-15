@@ -156,7 +156,7 @@ AI tools were used responsibly to enhance productivity:
 | Tool              | Usage                                                 |
 | ----------------- | ----------------------------------------------------- |
 | 💬 ChatGPT        | Generated boilerplate code, API ideas, test structure |
-| 🧠 GitHub Copilot | Assisted with repetitive UI and logic patterns        |
+
 
 📝 **Reflection:**
 AI accelerated development but all core logic, security, and testing decisions were manually reviewed and implemented.
@@ -191,25 +191,5 @@ AI accelerated development but all core logic, security, and testing decisions w
 ## 🧾 License
 
 📚 This project is built for **learning, evaluation, and demonstration purposes**.
-
----
-
-✨ **Happy Coding & Sweet Managing!** 🍰
-
-````
-
----
-
-## ✅ How to Use This
-
-1. Replace your existing `README.md`
-2. Add screenshots (optional but recommended)
-3. Commit:
-
-```bash
-git add README.md
-git commit -m "docs: add colorful and descriptive README"
-git push
-````
 
 ---
