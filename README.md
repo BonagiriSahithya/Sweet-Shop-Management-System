@@ -125,7 +125,7 @@ Run app:
 npm start
 ```
 
-🌐 App runs at: **[http://localhost:3000](http://localhost:3000)**
+🌐 App runs at: **[http://localhost:5170](http://localhost:5170)**
 
 ---
 
