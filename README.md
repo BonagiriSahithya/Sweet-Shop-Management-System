@@ -1,10 +1,3 @@
-Love that idea 🌈
-A **colorful README** really makes your project stand out in reviews and interviews.
-
-Below is a **visually rich, emoji-enhanced, colorful README.md** that is **GitHub-friendly** (no HTML hacks, clean markdown).
-You can **copy–paste this directly**.
-
----
 
 ````markdown
 # 🍭 Sweet Shop Management System 🍬
