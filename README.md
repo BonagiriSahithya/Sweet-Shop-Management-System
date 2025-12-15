@@ -169,13 +169,13 @@ AI accelerated development but all core logic, security, and testing decisions w
 
 ```markdown
 ### 📝 Signup Page
-![Signup](./screenshots/signup.png)
+![Signup](./screenshots/signup.jpg)
 
 ### 🛠️ Admin Dashboard
-![Admin](./screenshots/admin-dashboard.png)
+![Admin](./screenshots/admindashboard.jpg)
 
 ### 🛒 User Dashboard
-![User](./screenshots/user-dashboard.png)
+![User](./screenshots/userdashboard.jpg)
 ```
 
 ---
