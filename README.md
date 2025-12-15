@@ -1,10 +1,5 @@
 
 # 🍭 Sweet Shop Management System 🍬
-
-[![Frontend](https://img.shields.io/badge/Frontend-React-blue)](https://sweet-shop-management-system-theta-rust.vercel.app/signup) 
-[![Backend](https://img.shields.io/badge/Backend-Node.js-green)](https://sweet-shop-management-system-5c0g.onrender.com/api) 
-[![Database](https://img.shields.io/badge/Database-MongoDB-brightgreen)](https://www.mongodb.com/cloud/atlas)
-
 A modern **Full-Stack Sweet Shop Management System** built with **React**, **Node.js**, **Express**, and **MongoDB**.  
 Designed with **Test-Driven Development (TDD)** principles and clean, responsive UI.
 
@@ -37,7 +32,7 @@ The **Sweet Shop Management System** is a web app that allows users to **browse,
 
 ## 🚀 Live Demo
 
-- **Frontend (React)**: [Visit Here](https://sweet-shop-management-system-theta-rust.vercel.app/signup)  
+- **Frontend (React)**: [Visit Here](https://sweet-shop-management-system-theta-rust.vercel.app)  
 - **Backend (API)**: [Check API](https://sweet-shop-management-system-5c0g.onrender.com/api)  
 
 ---
