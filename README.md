@@ -167,16 +167,29 @@ AI accelerated development but all core logic, security, and testing decisions w
 
 📁 Add screenshots inside a `screenshots/` folder.
 
-```markdown
+### 🔐 Login Page
+![Login](./screenshots/login.png)
+
 ### 📝 Signup Page
-![Signup](./screenshots/signup.jpg)
+![Signup](./screenshots/signup.png)
 
 ### 🛠️ Admin Dashboard
-![Admin](./screenshots/admindashboard.jpg)
+![Admin Dashboard](./screenshots/admindashboard.png)
+
+### ➕ Add Sweets (Admin)
+![Add Sweets](./screenshots/add_sweets.png)
+
+### ⚙️ Manage Sweets (Admin)
+![Manage Sweets](./screenshots/manage_sweets.png)
 
 ### 🛒 User Dashboard
-![User](./screenshots/userdashboard.jpg)
-```
+![User Dashboard](./screenshots/userdashboard.png)
+
+### 💳 Purchase Sweet
+![Purchase](./screenshots/purchase.png)
+
+### 📊  Results View
+![Results](./screenshots/results.png)
 
 ---
 
