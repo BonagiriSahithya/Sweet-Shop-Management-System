@@ -1,201 +1,125 @@
+Sure! I can create a **polished, updated README** for your Sweet Shop Management System project, including your **deployed frontend and backend URLs**, tech stack, and features. Here’s an updated version:
 
 ````markdown
 # 🍭 Sweet Shop Management System 🍬
 
-✨ A full-stack **Sweet Shop Management System** built with **React**, **Node.js**, **Express**, and **MongoDB** — designed using **Test-Driven Development (TDD)** principles and modern UI practices.
+✨ A full-stack **Sweet Shop Management System** built with **React**, **Node.js**, **Express**, and **MongoDB** — designed with **Test-Driven Development (TDD)** principles and modern UI practices.
 
 ---
 
-## 🌟 What is this Project?
+## 🌟 Project Overview
 
-The **Sweet Shop Management System** helps manage sweets inventory and user purchases with **role-based access**:
+The **Sweet Shop Management System** is a full-stack application for managing sweets inventory and user purchases. It supports **role-based access**, allowing different actions for users and admins:
 
-🧑‍💻 **Users** can browse and purchase sweets  
-🧑‍🔧 **Admins** can manage inventory (add, update, restock, delete)
-
----
-
-## 🎯 Key Highlights
-
-✅ JWT-based Authentication  
-✅ Role-based Authorization (Admin / User)  
-✅ Real-time Inventory Updates  
-✅ Purchase Button Disabled When Out of Stock  
-✅ Clean UI with Cards & Grids  
-✅ Built using TDD methodology  
+- 🧑‍💻 **Users** can browse, view, and purchase sweets.  
+- 🧑‍🔧 **Admins** can manage inventory — add new sweets, update details, restock quantities, and delete items.
 
 ---
 
-## 🧁 Features Breakdown
+## 🚀 Live Demo
 
-### 🔐 Authentication
-- Register new users
-- Login with secure JWT tokens
-
-### 🍩 Sweet Management (Admin)
-- Add new sweets
-- Update sweet details
-- Delete sweets
-- Restock inventory
-
-### 🛒 User Experience
-- View all sweets
-- Search sweets
-- Purchase sweets
-- Out-of-stock handling
+- **Frontend (React)**: [https://sweet-shop-management-system-theta-rust.vercel.app/signup](https://sweet-shop-management-system-theta-rust.vercel.app/signup)  
+- **Backend API (Node.js + Express)**: [https://sweet-shop-management-system-5c0g.onrender.com/api](https://sweet-shop-management-system-5c0g.onrender.com/api)
 
 ---
 
-## 🛠️ Tech Stack
+## 🎯 Key Features
 
-| Layer | Tech |
-|-----|-----|
-| 🎨 Frontend | React, React Router |
-| ⚙️ Backend | Node.js, Express |
-| 🗄️ Database | MongoDB |
-| 🔑 Auth | JWT |
-| 🎨 Styling | CSS (Flexbox & Grid) |
+- ✅ JWT-based Authentication and Authorization  
+- ✅ Role-based Access Control (Admin / User)  
+- ✅ Fully RESTful API with Express  
+- ✅ MongoDB Atlas for persistent cloud database  
+- ✅ CORS enabled for frontend-backend communication  
+- ✅ Test-Driven Development (TDD) with Jest and Supertest  
+- ✅ Modern, responsive UI with React and React Router
 
 ---
 
-## 🗂️ Project Structure
+## 🛠 Tech Stack
 
+| Frontend          | Backend                 | Database         | Others               |
+|------------------|------------------------|----------------|---------------------|
+| React (Vite)     | Node.js + Express       | MongoDB Atlas   | Axios, JWT, bcrypt  |
+| React Router DOM | JSON Web Tokens (JWT)   | Mongoose ODM    | CORS, dotenv        |
+| Vite             | Jest & Supertest (TDD) |                | Nodemon (dev)       |
+
+---
+
+## 📦 Getting Started
+
+### 1️⃣ Clone the Repo
 ```bash
-Sweet-Shop-Management-System/
-│
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── tests/
-│   └── server.js
-│
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   └── package.json
-│
-├── .gitignore
-└── README.md
+git clone https://github.com/BonagiriSahithya/Sweet-Shop-Management-System.git
 ````
 
----
-
-## 🚀 Getting Started
-
-### 🖥️ Backend Setup
+### 2️⃣ Backend Setup
 
 ```bash
 cd backend
 npm install
-```
-
-Create `.env` file:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_url
-JWT_SECRET=your_secret_key
-```
-
-Start server:
-
-```bash
+cp .env.example .env
+# Update .env with your MongoDB URI and JWT secret
 npm run dev
 ```
 
----
+* Backend runs at `http://localhost:5000` by default.
 
-### 🎨 Frontend Setup
+### 3️⃣ Frontend Setup
 
 ```bash
 cd frontend
 npm install
+cp .env.example .env
+# Update .env with VITE_API_URL pointing to backend
+npm run dev
 ```
 
-Create `.env` file:
+* Frontend runs at `http://localhost:5173` by default.
 
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
+---
 
-Run app:
+## ⚡ Usage
+
+1. Sign up as a **User** or **Admin**
+2. Login to access your dashboard
+3. Admins can manage sweets inventory
+4. Users can browse and purchase sweets
+
+---
+
+## 🧪 Testing
+
+* Backend tests are written using **Jest** and **Supertest**:
 
 ```bash
-npm start
-```
-
-🌐 App runs at: **[http://localhost:5170](http://localhost:5170)**
-
----
-
-## 🧪 Testing (TDD)
-
-✔️ Tests written **before** implementation
-✔️ Red → Green → Refactor workflow
-
-Run tests:
-
-```bash
-npm test
+cd backend
+npm run test
+npm run test:coverage
 ```
 
 ---
 
-## 🤖 My AI Usage
+## 📌 Notes
 
-AI tools were used responsibly to enhance productivity:
-
-| Tool              | Usage                                                 |
-| ----------------- | ----------------------------------------------------- |
-| 💬 ChatGPT        | Generated boilerplate code, API ideas, test structure |
-
-
-📝 **Reflection:**
-AI accelerated development but all core logic, security, and testing decisions were manually reviewed and implemented.
+* Make sure your **MongoDB Atlas URI** is valid in `.env`.
+* Frontend communicates with backend via `VITE_API_URL`.
+* JWT tokens are stored in **localStorage** for session persistence.
 
 ---
 
-## 📸 Screenshots
+## 🌐 Deployment
 
-📁 Add screenshots inside a `screenshots/` folder.
-
-### 🔐 Login Page
-![Login](./screenshots/login.png)
-
-### 📝 Signup Page
-![Signup](./screenshots/signup.png)
-
-### 🛠️ Admin Dashboard
-![Admin Dashboard](./screenshots/admindashboard.png)
-
-### ➕ Add Sweets (Admin)
-![Add Sweets](./screenshots/add_sweets.png)
-
-### ⚙️ Manage Sweets (Admin)
-![Manage Sweets](./screenshots/manage_sweets.png)
-
-### 🛒 User Dashboard
-![User Dashboard](./screenshots/userdashboard.png)
-
-### 💳 Purchase Sweet
-![Purchase](./screenshots/purchase.png)
-
-### 📊  Results View
-![Results](./screenshots/results.png)
+* **Frontend** deployed on **Vercel**
+* **Backend API** deployed on **Render**
 
 ---
 
-## 📬 Connect With Me
+## 💖 Author
 
-👩‍💻 **GitHub:** [https://github.com/BonagiriSahithya](https://github.com/BonagiriSahithya)
-📦 **Project Repo:**
-[https://github.com/BonagiriSahithya/Sweet-Shop-Management-System](https://github.com/BonagiriSahithya/Sweet-Shop-Management-System)
+* Sahithya Bonagiri
+* GitHub: [BonagiriSahithya](https://github.com/BonagiriSahithya)
+* Portfolio: *Your Portfolio Link Here*
 
----
+```
 
-## 🧾 License
 
-📚 This project is built for **learning, evaluation, and demonstration purposes**.
-
----
