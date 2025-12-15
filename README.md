@@ -1,10 +1,3 @@
-Love that idea 🌈
-A **colorful README** really makes your project stand out in reviews and interviews.
-
-Below is a **visually rich, emoji-enhanced, colorful README.md** that is **GitHub-friendly** (no HTML hacks, clean markdown).
-You can **copy–paste this directly**.
-
----
 
 ````markdown
 # 🍭 Sweet Shop Management System 🍬
@@ -167,16 +160,29 @@ AI accelerated development but all core logic, security, and testing decisions w
 
 📁 Add screenshots inside a `screenshots/` folder.
 
-```markdown
+### 🔐 Login Page
+![Login](./screenshots/login.png)
+
 ### 📝 Signup Page
 ![Signup](./screenshots/signup.png)
 
 ### 🛠️ Admin Dashboard
-![Admin](./screenshots/admin-dashboard.png)
+![Admin Dashboard](./screenshots/admindashboard.png)
+
+### ➕ Add Sweets (Admin)
+![Add Sweets](./screenshots/add_sweets.png)
+
+### ⚙️ Manage Sweets (Admin)
+![Manage Sweets](./screenshots/manage_sweets.png)
 
 ### 🛒 User Dashboard
-![User](./screenshots/user-dashboard.png)
-```
+![User Dashboard](./screenshots/userdashboard.png)
+
+### 💳 Purchase Sweet
+![Purchase](./screenshots/purchase.png)
+
+### 📊  Results View
+![Results](./screenshots/results.png)
 
 ---
 
