@@ -11,8 +11,8 @@ export default function AdminDashboard() {
 
   useEffect(() => { fetchSweets(); }, []);
 
-  const fetchSweets = async () => {
-    const res = await API.get('/sweets/search');
+  const fetchSweets = async (params = {}) => {
+    const res = await API.get('/sweets/search', { params });
     setSweets(res.data);
   };
 
@@ -24,28 +24,28 @@ export default function AdminDashboard() {
 
   const restock = async id => {
     const qty = prompt('Enter quantity');
-    if (qty) {
-      await API.put(`/sweets/restock/${id}`, { quantity: qty });
-      fetchSweets();
-    }
+    if (qty) { await API.put(`/sweets/restock/${id}`, { quantity: qty }); fetchSweets(); }
   };
 
   const remove = async id => {
-    if (window.confirm('Delete sweet?')) {
-      await API.delete(`/sweets/${id}`);
-      fetchSweets();
-    }
+    if (window.confirm('Delete sweet?')) { await API.delete(`/sweets/${id}`); fetchSweets(); }
   };
 
-  const searchSweets = async () => {
-    const res = await API.get('/sweets/search', { params: search });
-    setSweets(res.data);
+  const handleSearch = e => setSearch({ ...search, [e.target.name]: e.target.value });
+
+  const performSearch = () => {
+    const params = {};
+    if (search.name) params.name = search.name;
+    if (search.category) params.category = search.category;
+    if (search.minPrice) params.minPrice = search.minPrice;
+    if (search.maxPrice) params.maxPrice = search.maxPrice;
+    fetchSweets(params);
   };
 
   const tabs = [
     { key: 'add', label: '➕ Add' },
     { key: 'manage', label: '⚙ Manage' },
-    { key: 'search', label: '🔍 Search' }
+    { key: 'search', label: '🔍 Search' },
   ];
 
   return (
@@ -54,14 +54,18 @@ export default function AdminDashboard() {
       style={{
         backgroundImage: `url(${adminBg})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
         minHeight: '100vh'
       }}
     >
       <DashboardNavbar title="Admin Dashboard" tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className="page-content container">
-
-        {!activeTab && <div className="card"><h3>Select an operation above</h3></div>}
+        {!activeTab && (
+          <div className="card">
+            <h3 style={{ textAlign: 'center' }}>Select an operation above</h3>
+          </div>
+        )}
 
         {activeTab === 'add' && (
           <div className="card">
@@ -79,7 +83,7 @@ export default function AdminDashboard() {
             {sweets.map(s => (
               <div key={s._id} className="sweet-card">
                 <h3>{s.name}</h3>
-                <p>{s.category} | ₹{s.price} | Qty: {s.quantity}</p>
+                <p>{s.category} | ${s.price} | Qty: {s.quantity}</p>
                 <div className="card-buttons">
                   <button onClick={() => restock(s._id)}>Restock</button>
                   <button onClick={() => remove(s._id)}>Delete</button>
@@ -90,25 +94,27 @@ export default function AdminDashboard() {
         )}
 
         {activeTab === 'search' && (
-          <>
-            <div className="card">
-              <h3>Search Sweets</h3>
-              <input placeholder="Name" value={search.name} onChange={e => setSearch({ ...search, name: e.target.value })} />
-              <input placeholder="Category" value={search.category} onChange={e => setSearch({ ...search, category: e.target.value })} />
-              <input type="number" placeholder="Min Price" value={search.minPrice} onChange={e => setSearch({ ...search, minPrice: e.target.value })} />
-              <input type="number" placeholder="Max Price" value={search.maxPrice} onChange={e => setSearch({ ...search, maxPrice: e.target.value })} />
-              <button onClick={searchSweets}>Search</button>
-            </div>
+          <div className="card">
+            <h3>Search Sweets</h3>
+            <input name="name" placeholder="Name" value={search.name} onChange={handleSearch} />
+            <input name="category" placeholder="Category" value={search.category} onChange={handleSearch} />
+            <input name="minPrice" type="number" placeholder="Min Price" value={search.minPrice} onChange={handleSearch} />
+            <input name="maxPrice" type="number" placeholder="Max Price" value={search.maxPrice} onChange={handleSearch} />
+            <button onClick={performSearch}>Search</button>
 
-            <div className="grid">
+            <div className="grid" style={{ marginTop: '20px' }}>
               {sweets.map(s => (
                 <div key={s._id} className="sweet-card">
                   <h3>{s.name}</h3>
-                  <p>{s.category} | ₹{s.price} | Qty: {s.quantity}</p>
+                  <p>{s.category} | ${s.price} | Qty: {s.quantity}</p>
+                  <div className="card-buttons">
+                    <button onClick={() => restock(s._id)}>Restock</button>
+                    <button onClick={() => remove(s._id)}>Delete</button>
+                  </div>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>

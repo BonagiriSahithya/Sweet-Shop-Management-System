@@ -10,24 +10,30 @@ export default function UserDashboard() {
 
   useEffect(() => { fetchSweets(); }, []);
 
-  const fetchSweets = async () => {
-    const res = await API.get('/sweets/search');
+  const fetchSweets = async (params = {}) => {
+    const res = await API.get('/sweets/search', { params });
     setSweets(res.data);
   };
 
   const purchase = async id => {
     await API.put(`/sweets/purchase/${id}`);
-    fetchSweets();
+    fetchSweets(search);
   };
 
-  const searchSweets = async () => {
-    const res = await API.get('/sweets/search', { params: search });
-    setSweets(res.data);
+  const handleSearch = e => setSearch({ ...search, [e.target.name]: e.target.value });
+
+  const performSearch = () => {
+    const params = {};
+    if (search.name) params.name = search.name;
+    if (search.category) params.category = search.category;
+    if (search.minPrice) params.minPrice = search.minPrice;
+    if (search.maxPrice) params.maxPrice = search.maxPrice;
+    fetchSweets(params);
   };
 
   const tabs = [
-    { key: 'buy', label: '🛒 Buy' },
-    { key: 'search', label: '🔍 Search' }
+    { key: 'buy', label: '🛒 Buy Sweets' },
+    { key: 'search', label: '🔍 Search Sweets' },
   ];
 
   return (
@@ -36,21 +42,25 @@ export default function UserDashboard() {
       style={{
         backgroundImage: `url(${userBg})`,
         backgroundSize: 'cover',
-        minHeight: '100vh'
+        backgroundPosition: 'center',
+        minHeight: '100vh',
       }}
     >
       <DashboardNavbar title="User Dashboard" tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className="page-content container">
-
-        {!activeTab && <div className="card"><h3>Choose an option above</h3></div>}
+        {!activeTab && (
+          <div className="card">
+            <h3 style={{ textAlign: 'center' }}>Choose an option above</h3>
+          </div>
+        )}
 
         {activeTab === 'buy' && (
           <div className="grid">
             {sweets.map(s => (
               <div key={s._id} className="sweet-card">
                 <h3>{s.name}</h3>
-                <p>{s.category} | ₹{s.price} | Qty: {s.quantity}</p>
+                <p>{s.category} | ${s.price} | Qty: {s.quantity}</p>
                 <button disabled={s.quantity < 1} onClick={() => purchase(s._id)}>
                   {s.quantity > 0 ? 'Purchase' : 'Out of Stock'}
                 </button>
@@ -60,28 +70,26 @@ export default function UserDashboard() {
         )}
 
         {activeTab === 'search' && (
-          <>
-            <div className="card">
-              <h3>Search Sweets</h3>
-              <input placeholder="Name" value={search.name} onChange={e => setSearch({ ...search, name: e.target.value })} />
-              <input placeholder="Category" value={search.category} onChange={e => setSearch({ ...search, category: e.target.value })} />
-              <input type="number" placeholder="Min Price" value={search.minPrice} onChange={e => setSearch({ ...search, minPrice: e.target.value })} />
-              <input type="number" placeholder="Max Price" value={search.maxPrice} onChange={e => setSearch({ ...search, maxPrice: e.target.value })} />
-              <button onClick={searchSweets}>Search</button>
-            </div>
+          <div className="card">
+            <h3>Search Sweets</h3>
+            <input name="name" placeholder="Name" value={search.name} onChange={handleSearch} />
+            <input name="category" placeholder="Category" value={search.category} onChange={handleSearch} />
+            <input name="minPrice" type="number" placeholder="Min Price" value={search.minPrice} onChange={handleSearch} />
+            <input name="maxPrice" type="number" placeholder="Max Price" value={search.maxPrice} onChange={handleSearch} />
+            <button onClick={performSearch}>Search</button>
 
-            <div className="grid">
+            <div className="grid" style={{ marginTop: '20px' }}>
               {sweets.map(s => (
                 <div key={s._id} className="sweet-card">
                   <h3>{s.name}</h3>
-                  <p>{s.category} | ₹{s.price} | Qty: {s.quantity}</p>
+                  <p>{s.category} | ${s.price} | Qty: {s.quantity}</p>
                   <button disabled={s.quantity < 1} onClick={() => purchase(s._id)}>
                     {s.quantity > 0 ? 'Purchase' : 'Out of Stock'}
                   </button>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
