@@ -2,10 +2,14 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 const generateToken = (id) => {
-  const secret = process.env.JWT_SECRET || 'testsecret';
-  return jwt.sign({ id }, secret, { expiresIn: '1d' });
+  return jwt.sign(
+    { id },
+    process.env.JWT_SECRET,
+    { expiresIn: '1d' }
+  );
 };
 
+// SIGNUP
 exports.signup = async (req, res) => {
   const { name, email, password, role } = req.body;
 
@@ -14,21 +18,21 @@ exports.signup = async (req, res) => {
   }
 
   try {
-    if (role === 'admin') {
-      const adminExists = await User.findOne({ role: 'admin' });
-      if (adminExists) {
-        return res.status(400).json({ message: 'Admin already exists' });
-      }
-    }
-
+    // Check if email already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    const user = await User.create({ name, email, password, role });
+    // Create user (admin or user)
+    const user = await User.create({
+      name,
+      email,
+      password,
+      role: role === 'admin' ? 'admin' : 'user'
+    });
 
-    return res.status(201).json({
+    res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -36,10 +40,12 @@ exports.signup = async (req, res) => {
       token: generateToken(user._id)
     });
   } catch (err) {
-    return res.status(500).json({ message: 'Signup failed' });
+    console.error(err);
+    res.status(500).json({ message: 'Signup failed' });
   }
 };
 
+// LOGIN
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -49,11 +55,12 @@ exports.login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
+
     if (!user || !(await user.matchPassword(password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    return res.json({
+    res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -61,6 +68,7 @@ exports.login = async (req, res) => {
       token: generateToken(user._id)
     });
   } catch (err) {
-    return res.status(500).json({ message: 'Login failed' });
+    console.error(err);
+    res.status(500).json({ message: 'Login failed' });
   }
 };
