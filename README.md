@@ -82,9 +82,35 @@ npm run dev
 
 ---
 
-## 🌈 Screenshots
 
-*(You can add some screenshots of the app here to make it visually appealing)*
+## 🖼️ Screenshots & UI Preview
+
+### 🔐 Signup
+![Signup](screenshots/signup.png)
+
+### 🔑 Login
+![Login](screenshots/login.png)
+
+### 🛠️ Admin Dashboard
+![Admin Dashboard](screenshots/admin_dashboard.png)
+
+### 👤 User Dashboard
+![User Dashboard](screenshots/user_dashboard.png)
+
+### ➕ Add Sweets (Admin)
+![Add Sweets](screenshots/add_sweets.png)
+
+### 📦 Manage Sweets (Admin)
+![Manage Sweets](screenshots/manage_sweets.png)
+
+### 🔍 Search Sweets
+![Search Sweets](screenshots/search_sweets.png)
+
+### 🛒 Purchase Sweets
+![Purchase](screenshots/purchase.png)
+
+### 🔎 User Search Sweets
+![User Search Sweets](screenshots/user_search.png)
 
 ---
 
