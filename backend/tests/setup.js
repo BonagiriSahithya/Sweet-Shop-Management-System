@@ -9,10 +9,13 @@ let mongoServer;
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   await mongoose.connect(mongoServer.getUri());
+
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+  jest.spyOn(console, 'log').mockImplementation(() => {});
 });
 
 afterEach(async () => {
-  jest.restoreAllMocks();   // ⭐ THIS FIXES YOUR 500 ERRORS
+  jest.restoreAllMocks();
 
   const collections = mongoose.connection.collections;
   for (const key in collections) {
@@ -24,4 +27,3 @@ afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
 });
-

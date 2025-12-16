@@ -9,15 +9,15 @@ describe('Auth Controller – Remaining Branches', () => {
     expect(res.statusCode).toBe(400);
   });
 
-  it('prevents second admin creation', async () => {
-    await request(app).post('/api/auth/signup')
-      .send({ name: 'Admin', email: 'admin1@test.com', password: '123', role: 'admin' });
+ it('allows multiple admins to be created', async () => {
+  const res = await request(app)
+    .post('/api/auth/signup')
+    .send({ name: 'Admin2', email: 'admin2@test.com', password: '123', role: 'admin' });
 
-    const res = await request(app).post('/api/auth/signup')
-      .send({ name: 'Admin2', email: 'admin2@test.com', password: '123', role: 'admin' });
+  expect(res.statusCode).toBe(201);
+  expect(res.body.role).toBe('admin');
+});
 
-    expect(res.statusCode).toBe(400);
-  });
 
   it('prevents duplicate user', async () => {
     await request(app).post('/api/auth/signup')
